@@ -1,0 +1,8 @@
+.idea/*
+*.pyc
+*.pyo
+*.sqlite3
+beacon/local_settings.py
+__pycache__
+staticfiles
+uploads
