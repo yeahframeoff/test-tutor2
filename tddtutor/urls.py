@@ -20,5 +20,6 @@ from lists import views as listviews
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', listviews.home_page, name='home'),
+    url(r'^lists/new$', listviews.new_list, name='new_list'),
     url(r'^lists/the-only-list-in-the-world/$', listviews.view_list, name='view_list'),
 ]
