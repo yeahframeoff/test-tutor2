@@ -38,16 +38,21 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == '#1: Fry potatoes' for row in rows),
-            'New to-do item did not appear in the list'
-        )
+        self.assertIn('#1: Fry potatoes', [row.text for row in rows])
 
         # There is still a textbox inviting her to add another item.
         # She enters "Bake some bread"
-        self.fail('Finish the test!')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Bake some bread')
+        inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on her list
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('#1: Fry potatoes', [row.text for row in rows])
+        self.assertIn('#2: Bake some bread', [row.text for row in rows])
+
+        self.fail('Finish the test!')
 
         # Edith wonders whether the site will remember her list. Then she sees
         # that the site generated a unique URL for her -- there is some
