@@ -3,8 +3,6 @@ from selenium import webdriver
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.common.keys import Keys
 
-from unittest import skip
-
 
 class NewVisitorTest(StaticLiveServerTestCase):
 
@@ -35,7 +33,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         rows = table.find_elements_by_tag_name('tr')
         self.assertIn(row_text, [row.text for row in rows])
 
-    @skip
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Edith has heard about a cool new online to-do app. She goes
         # to check out its homepage.
@@ -127,4 +124,3 @@ class NewVisitorTest(StaticLiveServerTestCase):
             512,
             delta=6
         )
-
